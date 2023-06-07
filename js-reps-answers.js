@@ -169,6 +169,20 @@ whereIsWaldo[1][2] = "No One";
 //Access and console.log "Waldo" 
 console.log('\nDid I find Waldo?\t', 
             whereIsWaldo[2][1][1] == "Waldo" ? "Yes" : "No!");
-
 //test
 console.log(whereIsWaldo[0], whereIsWaldo[1], [whereIsWaldo[2]]);
+
+/*      *       *   Excited Kitten    *       *       *       *
+ * Write code that logs "Love me, pet me! HSSSSSS!" 20 times.
+ * For every even number in your loop, 
+ * log "...human...why you taking pictures of me?...", 
+ * "...the catnip made me do it...", 
+ * or "...why does the red dot always get away..." at random.
+ * */
+for (let i = 1; i <= 20; i++){
+    const catMeows = ["...human...why you taking pictures of me?...",
+                    "...the catnip made me do it...", 
+                    "...why does the red dot always get away..."]
+    const random = Math.floor(Math.random()*3)
+    i % 2 == 0 ? console.log(catMeows[random]) : console.log(i);
+}
