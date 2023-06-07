@@ -152,3 +152,23 @@ console.log(favMovies.indexOf('Fast and Furiou')); //-1
 //Thought question: that we declared the variable favMovies with const, 
 //and yet, we were allowed to change the array. Weird? Should we have used let?
 console.log('\nconst keyword refers to the immutable reference of an Array, not to its never-changing values.');
+
+/*      *       *   Where is Waldo    *       *       *       *
+ * With the following multi-dimensional array 
+ * */
+const whereIsWaldo = [["Timmy", "Frank"], "Eggbert",
+                    ["Lucinda", "Jacc", "Neff", "Snoop"],
+                    ["Petunia", ["Baked Goods", "Waldo"]]];
+
+//remove "Eggbert"
+whereIsWaldo.splice(1, 1);
+
+//change "Neff" to "No One"
+whereIsWaldo[1][2] = "No One";
+
+//Access and console.log "Waldo" 
+console.log('\nDid I find Waldo?\t', 
+            whereIsWaldo[2][1][1] == "Waldo" ? "Yes" : "No!");
+
+//test
+console.log(whereIsWaldo[0], whereIsWaldo[1], [whereIsWaldo[2]]);
