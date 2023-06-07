@@ -186,3 +186,15 @@ for (let i = 1; i <= 20; i++){
     const random = Math.floor(Math.random()*3)
     i % 2 == 0 ? console.log(catMeows[random]) : console.log(i);
 }
+
+/*      *       *   Find the Median    *       *       *       *
+ * Find the median number in the following numsarray, 
+ * then console.log that number.
+ * hint if you check the length of the array / 2, you might get not get a whole number. 
+ * In which case, look into Math.floor( // something )
+ * */
+const nums = [14,11,16,15,13,16,15,17,19,11,12,14,19,11,15,17,11,18,12,17,12,71,18,15,12];
+
+let median = Math.floor(nums.length/2);
+
+console.log('\nThe Array\'s median is:\t', nums[median]);
