@@ -67,4 +67,19 @@ wolfy.shift();
 //-remove "Wolfy" from the wolfyarray and replace it with "Gameboy".
 wolfy.unshift("Gameboy")
 
-console.log(plantee, wolfy, dart[3]);
+console.log(plantee, wolfy, dart[3]);       //log changed arrays
+
+/*      *       *   Yell at the Ninja Turtles    *       *       *       *
+ * As a developer, you'll be a lifelong learner and constantly encountering new things. 
+ * We'll give you little stretches like this to get you used to looking at documentation
+ *  and figuring some things out on your own. You've got this!
+ */
+//Create an array with the members of the ninja turtles
+//(Donatello, Leonardo, Raphael, Michaelangelo)
+const ninjaTurtles = ['Donatello', 'Leonardo', 'Raphael', 'Michaelangelo'];
+
+//Use a for of loop(not a typo - try it out! Try a for ofloop) 
+//to call toUpperCase()on each of them and print out the result.
+for (const ninja of ninjaTurtles) {
+    console.log(ninja.toUpperCase() +"!");
+}
