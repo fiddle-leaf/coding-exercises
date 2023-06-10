@@ -10,11 +10,10 @@
  *      * getPrice() - return the price
  **/
 class Hamster {
-    owner = "";
-    static price = 13;
-
+    static owner = "";
     constructor(name) {
         this.name = name;
+        this.price = 13;
     }
 
     wheelrun() {
@@ -46,24 +45,28 @@ class Person {
         this.bankAccount = 0;
     }
 
-    static eat(){
-        ++this.weight, ++this.mood;
+    eat(x) {
+        for (let i = 0; i < x; i++) {
+            ++this.weight, ++this.mood;
+        } 
     }
 
-    static exercise(){
-        --this.weight;
+    exercise(x){
+        for (let i = 0; i < x; i++) {
+            --this.weight;
+        }   
     }
 
-    static ageUp(){
-        ++this.age;
-        ++this.height;
-        ++this.weight;
-        --this.mood;
-        this.bankAccount += 10
+    ageUp(x){
+        this.age += x;
+        this.height += x;
+        this.weight += x;
+        this.mood -= x;
+        this.bankAccount += 10 * x 
     }
 
     getName(){
-        return console.log(`My name is ${super.name}`);
+        return console.log(`My name is ${this.name}`);
     }
 
     getAge(){
@@ -71,19 +74,66 @@ class Person {
     }
 
     getWeight(){
-        return console.log(`Weight:\t${this.weight}lbs}`);
+        return console.log(`Weight:\t${this.weight}lbs`);
     }
 
     greet(){
-        return console.log(`Good morning Ms.${this.name}`);
+        return console.log(`Good morning!`);
     }
 
-    buyHamster(Hamster){
-        this.hamsters.push(Hamster);
+    buyHamster(pet){
+        this.hamsters.push(pet);
         this.mood += 10;
-        this.bankAccount -= super.getPrice();
+        this.bankAccount -= pet.getPrice();
     }
-
-
 
 }
+
+/**
+ * Create a Story with your Person class
+ */
+//Instantiate a new Person named Timmy & give timmy 5 years
+const timmy = new Person("Timmy");
+timmy.age = 5;
+//console.log(timmy);                          //test
+
+//Have him eat five times.
+timmy.eat(5);
+//console.log(timmy);
+
+//Have him exercise five times.
+timmy.exercise(5);
+//console.log(timmy);
+
+//Age Timmy 9 years.
+timmy.ageUp(9);
+//console.log(timmy.age);
+
+//Create a hamster named "Gus".
+const gus = new Hamster("Gus Palomino");
+gus.wheelrun();
+
+//Set Gus's owner to the string "Timmy".
+gus.owner = "Timmy";
+//console.log(gus);
+
+//Have Timmy "buy" Gus.
+timmy.buyHamster(gus);
+//console.log(timmy);
+
+//Age Timmy 15 years.
+timmy.ageUp(15);
+
+//Have Timmy eat twice & exercise twice
+timmy.eat(2);
+timmy.exercise(2);
+
+timmy.greet();
+console.log(gus.owner);
+timmy.getAge();
+timmy.getWeight();
+gus.eatFood();
+console.log("Bank account balance:\t", "$"+timmy.bankAccount);
+console.log("Pet name:\t", gus.name);
+gus.wheelrun();
+console.log("Mood Score:\t", timmy.mood);
