@@ -137,3 +137,48 @@ console.log("Bank account balance:\t", "$"+timmy.bankAccount);
 console.log("Pet name:\t", gus.name);
 gus.wheelrun();
 console.log("Mood Score:\t", timmy.mood);
+
+/**
+ * Chef Make Dinners
+ * Chef should be a factory of Dinner
+ * Add a constructor to dinner that sets the string properties:
+ * appetizer, entree and dessert
+ * Add a method on chef that takes three arguments
+ * return a new Dinner based on those arguments
+ *
+ **/
+
+class Dinner {
+    constructor(appetizer, entree, dessert){
+        this.appetizer = "";
+        this.entree = "";
+        this.dessert = "";
+    }
+
+}
+
+const Chef = (name, appetizer, entree, dessert) => {
+    const chefName = name;
+    Dinner.appetizer = appetizer;
+    Dinner.entree = entree;
+    Dinner.dessert = dessert;
+
+    return {makeDinner: () => console.log(`Today's dinner is ${Dinner.appetizer}`,
+                            `with ${Dinner.entree} as the main course, and`,
+                            `${Dinner.dessert} for dessert by ${chefName}`)}
+}
+
+
+//Have the Chef create 3 dinners, log the dinners.
+const monDinner = Chef("SJ", "Brussel Sprouts", "Salmon", "Ice cream");
+monDinner.makeDinner();
+
+const wedDinner = Chef("Shanon", "Mashed Potatoes", "Steak", "Tiramisu");
+wedDinner.makeDinner();
+
+const friDinner = Chef("SJ & Shanon", "Green Beans", "Grilled Chicken", "Tres Leches")
+friDinner.makeDinner();
+
+
+
+
