@@ -16,3 +16,15 @@ const makeSentence = (x, y, z) => {
     return x + " " + y + " " + z + ".";
 }
 console.log(makeSentence("My", "favorite", "puppy"));
+
+/**
+ * Write a function called getLastElement that takes a parameter arr.
+ * Invoke the function with an array as the argument.
+ * The function should print the last element within the array.
+ */
+
+const getLastElement = (array) => {
+    return array[array.length-1];
+}
+
+console.log(getLastElement(["hot dogs", "burgers", "sausage"]));
