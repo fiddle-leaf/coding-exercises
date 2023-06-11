@@ -7,3 +7,12 @@ const minusOne = (x) => {
 }
 
 console.log(minusOne(35));
+
+/**
+ * Write a function makeSentence that takes three parameters 
+ * and concatenates them into a fully formed sentence.
+ */
+const makeSentence = (x, y, z) => {
+    return x + " " + y + " " + z + ".";
+}
+console.log(makeSentence("My", "favorite", "puppy"));
