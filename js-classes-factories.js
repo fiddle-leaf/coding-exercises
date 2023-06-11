@@ -149,36 +149,35 @@ console.log("Mood Score:\t", timmy.mood);
  **/
 
 class Dinner {
+    intro = "\n*\t* Today's Dinner of the Day (DOOD) *\t*";
     constructor(appetizer, entree, dessert){
-        this.appetizer = "";
-        this.entree = "";
-        this.dessert = "";
+        this.appetizer = appetizer;
+        this.entree = entree;
+        this.dessert = dessert;
     }
 
+    getDOOD() {
+        console.log("Appetizer:\t", this.appetizer);
+        console.log("Entree:\t\t", this.entree);
+        console.log("Dessert:\t", this.dessert);
+    }
 }
 
-const Chef = (name, appetizer, entree, dessert) => {
-    const chefName = name;
-    Dinner.appetizer = appetizer;
-    Dinner.entree = entree;
-    Dinner.dessert = dessert;
-
-    return {makeDinner: () => console.log(`Today's dinner is ${Dinner.appetizer}`,
-                            `with ${Dinner.entree} as the main course, and`,
-                            `${Dinner.dessert} for dessert by ${chefName}`)}
+const Chef = (chefName) => {
+    const getName = () => {return chefName};
+    const makeDinner = (app, main, dessert) => {
+        return new Dinner(app, main, dessert);
+    }
+    return {chefName, getName, makeDinner};
 }
 
+const chefSelune = Chef("Selune Palomino");
+//console.log(chefSelune);
 
-//Have the Chef create 3 dinners, log the dinners.
-const monDinner = Chef("SJ", "Brussel Sprouts", "Salmon", "Ice cream");
-monDinner.makeDinner();
+const seluneDinner = chefSelune.makeDinner("chicken wings", "arroz con pollo", 
+"tres leches");
+//console.log(seluneDinner);
 
-const wedDinner = Chef("Shanon", "Mashed Potatoes", "Steak", "Tiramisu");
-wedDinner.makeDinner();
-
-const friDinner = Chef("SJ & Shanon", "Green Beans", "Grilled Chicken", "Tres Leches")
-friDinner.makeDinner();
-
-
-
-
+console.log(seluneDinner.intro);
+console.log("\tBy: ", chefSelune.getName());
+seluneDinner.getDOOD()
