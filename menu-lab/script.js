@@ -7,9 +7,20 @@
  **/
 var menuLinks = [
     {text: 'about', href: '/about'},
-    {text: 'catalog', href: '/catalog'},
-    {text: 'orders', href: '/orders'},
-    {text: 'account', href: '/account'},
+    {text: 'catalog', href: '#', subLinks: [
+      {text: 'all', href: '/catalog/all'},
+      {text: 'top selling', href: '/catalog/top'},
+      {text: 'search', href: '/catalog/search'},
+    ]},
+    {text: 'orders', href: '#' , subLinks: [
+      {text: 'new', href: '/orders/new'},
+      {text: 'pending', href: '/orders/pending'},
+      {text: 'history', href: '/orders/history'},
+    ]},
+    {text: 'account', href: '#', subLinks: [
+      {text: 'profile', href: '/account/profile'},
+      {text: 'sign out', href: '/account/signout'},
+    ]},
   ];
 
 /**
@@ -68,5 +79,38 @@ menuLinks.forEach(link => {
     }
     topMenuEl.appendChild(newLink);
 })
+
+/**
+ * task 4: Select and cache the <nav id="sub-menu">element in a variable named subMenuEl.
+ **/
+let subMenuEl = document.getElementById("sub-menu");
+
+/**
+ * task 4.1: Set the height subMenuElelement to be 100%
+ **/
+subMenuEl.style.height = "100%";
+
+/**
+ * task 4.2: Set the background color of subMenuElto the value stored in the --sub-menu-bgCSS custom property.
+ **/
+subMenuEl.style.background = "var(--sub-menu-bg)";
+
+/**
+ * task 4.3: Add the class of flex-aroundto the subMenuElelement.
+ **/
+subMenuEl.classList = "flex-around";
+
+/**
+ * task 4.4: Set the CSS positionproperty of subMenuElto the value of absolute.
+ **/
+subMenuEl.style.position = "absolute";
+
+/**
+ * task 4.5: Set the CSS topproperty of subMenuElto the value of 0.
+ **/
+subMenuEl.style.top = "0";
+
+
+
 
 
