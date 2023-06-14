@@ -110,7 +110,28 @@ subMenuEl.style.position = "absolute";
  **/
 subMenuEl.style.top = "0";
 
+/**
+ * task 5.1: Select and cache the all of the <a> elements inside of topMenuEl in a variable named topMenuLinks
+ **/
+let topMenuLinks = topMenuEl.querySelectorAll("a");
 
+// Declare a global showingSubMenuvariable and initialize it to false
+let showingSubMenu = false;
 
+/**
+ * task 5.2: Attach a delegated 'click' event listener to topMenuEl.
+ * The first line of code of the event listener function should call the event object's preventDefault()method.
+ * The second line of code function should immediately return if the element clicked was not an <a>element.
+ * console.logthe content of the <a>to verify the handler is working.
+ **/
+topMenuEl.addEventListener("click", (event) => {
+    event.preventDefault();
 
+    if (event.target.tagName.toLowerCase() != "a") {
+      return;
+    } else {
+      console.log(event.target.textContent);
+    }
+
+  });
 
