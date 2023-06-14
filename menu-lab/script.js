@@ -130,8 +130,56 @@ topMenuEl.addEventListener("click", (event) => {
     if (event.target.tagName.toLowerCase() != "a") {
       return;
     } else {
+/**
+ * Ensure ABOUT, CATALOG, etc. logs out about, catalog, etc. when a link is clicked.
+ * Clicking anywhere other than on a link should do nothing.
+ **/
       console.log(event.target.textContent);
-    }
+  }
 
-  });
+/**
+ * task 5.3: Next in the event listener, if the clicked <a>link has a class of active:
+ * Remove the activeclass from the clicked <a>element.
+ * Set the showingSubMenuto false.
+ * Set the CSS topproperty of subMenuElto 0.
+ * returnto exit the handler.
+ **/
+    if (event.target.classList.contains("active")) {
+      event.target.classList.remove("active");
+      showingSubMenu = false;
+      subMenuEl.style.top = "0";
+      return;
+    } 
+/**
+ * task 5.4: Next, the event listener should remove a class name of activefrom each <a>element in topMenuLinks- whether the activeclass exists or not.
+ * Hint: Removing a non-existent class from an element does not cause an error, so just remove it!
+ **/
+    else {
+      topMenuLinks.forEach(a => {
+        a.classList.remove("active");
+      })
+    }
+/**
+ * task 5.5: Next, the event listener should add a class name of activeto the <a>element that was clicked.
+ **/
+    event.target.classList.add("active");
+
+    const menuLinksObj = []
+    menuLinks.forEach(link =>{
+      menuLinksObj.push(link)
+
+      link.subLinks ? 
+      showingSubMenu = true :
+      showingSubMenu = false;
+      
+    })
+
+    console.log(menuLinksObj)
+
+  }
+);
+/**
+ * task 5.6: Set showingSubMenuto true if the clicked <a>element's "link" object within menuLinks has a subLinks property (all do, except for the "link" object for ABOUT), otherwise, set it to false.
+ * Hint: Saving the "link" object in a variable will come in handy for passing its subLinksarray in Task 5.7
+ **/
 
