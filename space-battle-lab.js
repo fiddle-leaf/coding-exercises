@@ -8,13 +8,10 @@
  * An action these ships can take is to attack something. 
  * Perhaps a ship object (an actor) could therefore have an attack method (an action).
  */
-const attackShip = state =>({
-  attack: () => {}
-})
-const makeShips = state => ({
-  buildShip: (num) => {
-    const ships = [];
-    let randomNum;
+
+const build = (num, name) => {
+  const ships = [];
+  let randomNum;
     const randomize = (x, y=0) => {
       x < 1 && y < 1 ?
       randomNum = Math.random()*(y - x) + x:
@@ -23,30 +20,60 @@ const makeShips = state => ({
     };
 
     for (let i = 0; i < num; i++) {
-      let shipNames = state.shipName + `${i+1}`;
+      let shipName = name + `${i+1}`;
       let alienHull = Math.round(randomize(3, 6));
       let alienFP = Math.round(randomize(2, 4));
       let alienAcc = Number(randomize(0.6, 0.8).toFixed(2));
-      ships.push(BattleShip(shipNames, alienHull, alienFP, alienAcc));
-    }
-
+      ships.push(BattleShip(shipName, alienHull, alienFP, alienAcc));
+    };
     return ships;
   }
-})
+
+  const fight = (state) =>({
+    attack: (ship) => {
+      let attacker = state, opponent = ship.state
+
+      if (attacker.hull <= 0){
+        console.log("Ship must be destroyed!");
+        alienShips.shift(attacker);
+      } else {
+        console.log(`${attacker.name} preparing attack...`);
+        switch (Math.random() > ship.state.accuracy) {
+          case true:
+            opponent.hull -= attacker.firepower;
+            console.log(`${opponent.name} hit!`);
+            return true;
+          case false:
+            console.log("Shot missed!");
+            return false;
+      };
+    };
+    },
+    destroy: (ship) => {
+      console.log(`Destroying ship...`);
+      return alienShips.includes(ship) ?
+      alienShips.shift(ship) :
+      console.log("User ship destroyed...");
+    }
+  })
+
  /**
  *  *  *  *  * Ship Properties *  *  *  *  *  *
  * hull is the same as hitpoints. If hull reaches 0 or less, the ship is destroyed
  * firepower is the amount of damage done to the hull of the target with a successful hit
  * accuracy is the chance between 0 and 1 that the ship will hit its target
  **/
-const BattleShip = (shipName, hull, firepower, accuracy) => {
+const BattleShip = (name, hull, firepower, accuracy) => {
   let state = {
-    shipName: shipName,
-    hull: hull,
-    firepower: firepower,
-    accuracy: accuracy,
+    name,
+    hull,
+    firepower,
+    accuracy
   }
-  return state
+  return Object.assign(
+    {state},
+    fight(state)
+  )
 };
 
 /**
@@ -64,8 +91,24 @@ console.log(userShip);
  * firepower - between 2and 4
  * accuracy - between .6 and .8
  */
-const alienShips = Object.assign({}, makeShips(BattleShip("AlienShip"))).buildShip(6);
-for (ships of alienShips){
-  console.log(ships);
-}
+const alienShips = build(6, "AlienShip");
+
+
+
+const game = () => {
+  let alien = alienShips[0];
+  switch (userShip.attack(alien)){
+    case true:
+      userShip.attack(alien);
+    case false:
+      alien.attack(userShip);
+  };
+
+  console.log("Score:\t", userShip.state.hull, alien.state.hull);
+  for (ship of alienShips){
+    console.log(ship.state);
+  }
+};
+
+game();
 
