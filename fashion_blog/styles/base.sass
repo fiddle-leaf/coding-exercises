@@ -1,0 +1,86 @@
+$lightgray: hsl(0, 0, 70%)
+$tomato: hsl(5, 95%, 50%)
+$border: 5px solid $lightgray
+$font: 'DM Sans', sans-serif
+    
+html
+    border-left: $border
+
+    *
+        padding-block: 0
+        padding-inline: 0
+        margin-block: 0
+        margin-inline: 0
+
+body
+    font-family: $font
+    min-height: 100vh
+    max-width: 1000px
+    margin: 0 auto
+    line-height: 175%
+
+    img
+        width: 100%
+        height: auto
+
+.flex
+    display: flex
+
+header
+    h1  
+        padding-block-start: 2rem
+        font:
+            weight: 400
+            size: 2.5rem
+
+    h2  
+        padding-block: 2rem
+        font:
+            weight: 500
+            size: 2.0rem
+
+header,
+main.page,
+footer
+    padding: 1rem 2rem
+
+ul.top-links > li > a
+    color: $lightgray
+
+header > h1,
+ul.foo-links > li > a,
+a.next-page
+    color: $tomato
+
+ul.top-links,
+ul.foo-links
+    @extend .flex
+    list-style: none
+    flex-flow: row nowrap
+    justify-content: space-between
+
+section.posts>article
+    margin-block-end: 4rem
+    padding-block-end: 3rem
+    border-bottom: $border
+    
+    h3
+        font:
+            size: 1.8rem
+            weight: 600
+
+        line-height: 185%
+
+    p::first-letter
+        color: $lightgray
+        font-size: 4rem
+        line-height: 1rem
+        padding: 2rem 1.5rem
+        float: left
+
+a.next-page
+    font-weight: bold
+    text-align: right
+
+p#copyright
+    color: $lightgray

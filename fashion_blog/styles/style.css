@@ -1,0 +1,89 @@
+html {
+  border-left: 5px solid hsl(0, 0%, 70%);
+}
+html * {
+  padding-block: 0;
+  padding-inline: 0;
+  margin-block: 0;
+  margin-inline: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  min-height: 100vh;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 175%;
+}
+body img {
+  width: 100%;
+  height: auto;
+}
+
+.flex, ul.top-links,
+ul.foo-links {
+  display: flex;
+}
+
+header h1 {
+  padding-block-start: 2rem;
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+header h2 {
+  padding-block: 2rem;
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+header,
+main.page,
+footer {
+  padding: 1rem 2rem;
+}
+
+ul.top-links > li > a {
+  color: hsl(0, 0%, 70%);
+}
+
+header > h1,
+ul.foo-links > li > a,
+a.next-page {
+  color: hsl(5, 95%, 50%);
+}
+
+ul.top-links,
+ul.foo-links {
+  list-style: none;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+section.posts > article {
+  margin-block-end: 4rem;
+  padding-block-end: 3rem;
+  border-bottom: 5px solid hsl(0, 0%, 70%);
+}
+section.posts > article h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 185%;
+}
+section.posts > article p::first-letter {
+  color: hsl(0, 0%, 70%);
+  font-size: 4rem;
+  line-height: 1rem;
+  padding: 2rem 1.5rem;
+  float: left;
+}
+
+a.next-page {
+  font-weight: bold;
+  text-align: right;
+}
+
+p#copyright {
+  color: hsl(0, 0%, 70%);
+}
+
+/*# sourceMappingURL=style.css.map */
